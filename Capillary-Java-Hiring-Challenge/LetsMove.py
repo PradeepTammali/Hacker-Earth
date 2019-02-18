@@ -15,29 +15,30 @@ def solve(y, x, Q, S):
       elif 'L' and 'U' in sub:
         LU_subs.append(sub)
     if x[0] == 0 and y[0] == 0:
-      count += 1   
+      count += 1
     for i in range(1, Q):
       if x[i] >= 0 and y[i] >= 0:
         for sub in UR_subs:
           if checkPoint(x[i], y[i], sub):
-            count +=1
+            count += 1
             break
       elif x[i] < 0 and y[i] < 0:
         for sub in DL_subs:
           if checkPoint(x[i], y[i], sub):
-            count +=1
+            count += 1
             break
       elif x[i] >= 0 and y[i] < 0:
         for sub in RD_subs:
           if checkPoint(x[i], y[i], sub):
-            count +=1
+            count += 1
             break
       elif x[i] < 0 and y[i] >= 0:
         for sub in LU_subs:
           if checkPoint(x[i], y[i], sub):
-            count +=1
+            count += 1
             break
     return count
+
 
 def checkPoint(x, y, sub):
   xd = 0
@@ -55,6 +56,7 @@ def checkPoint(x, y, sub):
     return True
   else:
     return False
+
 
 def get_all_substrings(input_string):
   length = len(input_string)
