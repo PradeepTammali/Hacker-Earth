@@ -6,13 +6,6 @@
             "request": "launch",
             "mainClass": "MinimizetheValue",
             "console": "integratedTerminal"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - BinaryTree",
-            "request": "launch",
-            "mainClass": "BinaryTree",
-            "console": "integratedTerminal"
         }
     ]
 }
