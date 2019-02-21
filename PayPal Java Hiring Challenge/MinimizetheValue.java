@@ -4,8 +4,6 @@
 
 import java.util.Scanner;
 
-import com.sun.glass.ui.Robot;
-
 import java.util.Arrays;
 
 class Node {
