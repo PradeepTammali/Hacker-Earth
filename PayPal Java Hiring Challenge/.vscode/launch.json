@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MinimizetheValue",
+            "request": "launch",
+            "mainClass": "MinimizetheValue",
+            "console": "integratedTerminal"
+        }
+    ]
+}

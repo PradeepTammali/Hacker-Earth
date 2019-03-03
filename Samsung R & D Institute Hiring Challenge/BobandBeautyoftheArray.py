@@ -22,4 +22,4 @@ if __name__ == '__main__':
     #     if len(subset) >= 2:
     #         ar = np.array(subset)
     #         sum += np.bitwise_or.reduce(ar)
-    print(sum%1000000007)
+    print(sum % 1000000007)
