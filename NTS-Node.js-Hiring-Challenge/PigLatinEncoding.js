@@ -1,3 +1,4 @@
+
 var fs = require('fs');
 
 var regExVowels = /[aeiou]/ig;
@@ -12,18 +13,34 @@ var isUpper = /^[A-Z]/;
 
 // TODO: Compound words and splitting of words properly of the the paragraph contains urls
 
-function convertToPigLatin(paragraph) {
-    encodedParagraph = '';
 
+function translateToPigLatin(paragraph){
+    encodedParagraph = '';
     // Splitting paragraph with paragraphSplit regEx but not woking fine with URLs
-    if(paragraph !== null && paragraph !== undefined && paragraph !== "")
-    paragraph.split(" ").forEach(string => {
+    if(paragraph !== null && paragraph !== undefined && paragraph !== ""){
+        var arr = paragraph.split(" ");
+        for(var i = 0; i < arr.length; i++){
+            var word = arr[i];
+            console.log("word:"+word);
+            var encodedWord = null;
+            encodedWord = convertToPigLatin(word);
+            console.log("encodedWord:"+encodedWord);
+            encodedParagraph += encodedWord;
+        }
+    }
+    return encodedParagraph;
+}
+
+
+
+function convertToPigLatin(string) {
+        var pigLatinWord = '';
         var encodedString = '';
         var stringEndingChars = '';
         var stringStartingChars = '';
         var vowelsSuffix = 'way';
         var consonantsSuffix = 'ay';
-        var compoundWords = string.split("-");
+        
                         // if (compoundWords.length > 1) {
                         //     var encodedCompoundString = "";
                         //     compoundWords.forEach(word => {
@@ -53,6 +70,7 @@ function convertToPigLatin(paragraph) {
             stringEndingChars = string.substring(endsIndex, string.length);
             string = string.substring(0, endsIndex);
         }
+        
         var isCapitalized = false;
         // Encoding the string 
         if (string !== null && string !== undefined && string !== '') {
@@ -85,21 +103,45 @@ function convertToPigLatin(paragraph) {
                     }
                 }
             } else {
-              encodedParagraph += string;
+              pigLatinWord = string;  // If Neither vowel nor consonant then the string must contain all the non alphbetical characters.
             }
         }
+        console.log("string-----"+string+"----piglatin:"+pigLatinWord);
         // Reformatting the string 
         if (isCapitalized) {
-            encodedParagraph += stringStartingChars + encodedString[0].toUpperCase() + encodedString.substring(1, encodedString.length) + stringEndingChars + " ";
+            pigLatinWord = stringStartingChars + encodedString[0].toUpperCase() + encodedString.substring(1, encodedString.length) + stringEndingChars + " ";
         } else {
-            encodedParagraph += stringStartingChars + encodedString + stringEndingChars + " ";
+            pigLatinWord = stringStartingChars + encodedString + stringEndingChars + " ";
         }
-    });
-    return encodedParagraph;
+        
+    return pigLatinWord;
 }
 
 
-console.log(convertToPigLatin("p21sd23dfsg234"));
+// console.log(translateToPigLatin("something will will here. It will convert into pig latin."));
+// console.log(convertToPigLatin("something"));
+console.log(convertToPigLatin("will."));
+// console.log(convertToPigLatin("happen"));
+// console.log(convertToPigLatin("here."));
+// console.log(convertToPigLatin("It"));
+// console.log(convertToPigLatin("will"));
+// console.log(convertToPigLatin("convert"));
+// console.log(convertToPigLatin("into"));
+// console.log(convertToPigLatin("pig"));
+// console.log(convertToPigLatin("latin"));
+
+
+
+// var input = "#$@a&v*$pradeep23424pradeep#@#$pradep()*998";
+// var terms = input.split(/[^a-z]/ig);
+// var nonterms = input.split(/[a-z]/ig);
+// console.log(terms);
+ 
+// uniquenonArray = nonterms.filter(function(elem, pos) {
+//     return nonterms.indexOf(elem) == pos;
+// })
+// console.log(uniqueArray);
+// console.log(uniquenonArray);
 
 // var bookData = fs.readFileSync('58472-0.txt', 'utf8');
 
