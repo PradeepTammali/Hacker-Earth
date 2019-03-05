@@ -1,9 +1,9 @@
 
 var fs = require('fs');
 
-var regExVowels = /[aeiou]/ig;
-var regExConsonents = /[b-df-hj-np-tv-z]/ig;
-var regYConsonents = /[aeiouy]/ig;
+var regExVowels = /[aeiou]/i;
+var regExConsonents = /[b-df-hj-np-tv-z]/i;
+var regYConsonents = /[aeiouy]/i;
 // var startsWith = /^[!@#$%^&*(),.?":{}|<>\[\];'0-9]+/g;
 // var endsWith = /[!@#$%^&*(),.?":{}\\|<>/\[\];0-9']+$/g;
 var startsWith = /^[a-z]+/ig;
@@ -21,10 +21,8 @@ function translateToPigLatin(paragraph){
         var arr = paragraph.split(" ");
         for(var i = 0; i < arr.length; i++){
             var word = arr[i];
-            console.log("word:"+word);
             var encodedWord = null;
             encodedWord = convertToPigLatin(word);
-            console.log("encodedWord:"+encodedWord);
             encodedParagraph += encodedWord;
         }
     }
@@ -70,7 +68,6 @@ function convertToPigLatin(string) {
             stringEndingChars = string.substring(endsIndex, string.length);
             string = string.substring(0, endsIndex);
         }
-        
         var isCapitalized = false;
         // Encoding the string 
         if (string !== null && string !== undefined && string !== '') {
@@ -78,6 +75,7 @@ function convertToPigLatin(string) {
             if (isUpper.test(string[0])) {
                 isCapitalized = true;
             }
+
             // Encoding for vowels 
             if (string[0].match(regExVowels)) {
                 lastChar = string.charAt(string.length - 1);
@@ -106,7 +104,7 @@ function convertToPigLatin(string) {
               pigLatinWord = string;  // If Neither vowel nor consonant then the string must contain all the non alphbetical characters.
             }
         }
-        console.log("string-----"+string+"----piglatin:"+pigLatinWord);
+        
         // Reformatting the string 
         if (isCapitalized) {
             pigLatinWord = stringStartingChars + encodedString[0].toUpperCase() + encodedString.substring(1, encodedString.length) + stringEndingChars + " ";
@@ -118,9 +116,9 @@ function convertToPigLatin(string) {
 }
 
 
-// console.log(translateToPigLatin("something will will here. It will convert into pig latin."));
+console.log(translateToPigLatin("something will will here. It will convert into pig latin."));
 // console.log(convertToPigLatin("something"));
-console.log(convertToPigLatin("will."));
+// console.log(convertToPigLatin("will."));
 // console.log(convertToPigLatin("happen"));
 // console.log(convertToPigLatin("here."));
 // console.log(convertToPigLatin("It"));
